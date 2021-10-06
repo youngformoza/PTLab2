@@ -1,0 +1,19 @@
+language: python
+python:
+- 3.8
+services:
+- postgresql
+install:
+#- export DATABASE_PASSWORD=''
+- psql -c 'create database django_db owner postgres;' -U postgres
+- pip install -r requirements.txt
+script:
+- python manage.py migrate
+- python manage.py test shop/tests/
+deploy:
+  provider: heroku
+  api_key:
+    secure: KI78bvB8Cul0rTQKtNK05c91ZpD+onr0tTzxHwWhN4weJb6AUUMt29u0ROgoUK7T2p5Xclw4M1uTlgmf/dd1SN50fX4d/uDCxTsSNvnzonoiMy545IgSSasDYLSRXjJRswE9WB4o8fuAlo2vG5ftgUWY96subPu6s9HJOmVhky+CswjFX0QRrsS/J6DiE9OtIxlvKedLxN85WS8kzomE1RB68KCY5PHwPOqOxr7kc35nJq0tDMfNpqBG7hUuN9anvHyWKOTmxMInKf3e9uELdMQjGG9Zsa0sPWP6YRYoEuS0SglVNhXw8ciNCeCSzGh3+rNMFp2a15s4yQ3xZ4N8RnQTudEHhUJUiwnNZ88XePog8Mm4gGHCPzmdA187hCPnE+CHuaC3RHFpB9cz7h4uEMLw1Vd4ZqCexj8jRsY9zXKAmqpxGp7Y8qx7iA0urwZZ2fvanPA4oyclEy7Xh9WR/hqgI+v+Pi1qf5kA9s/WSegL7Grc7bUuTPqVp9sdsjYkeFc4B1XFkhukPuiVJuJxPBJOipxRmNQDnH7P2soUdi2eEVu42CjciqXRPiTDGT8jVzKgaROMQ7l00Q+vDjwsilXueiNpPUi5K0trDrMnnGHHCr0GG11xhBL9z9NKo3Yx4nwjzTb2Lx1FxXzzg0LboNnQ20jchPrXVNmqP7vdc0w=
+  app: webapp-ivanov-shop
+  run: python manage.py loaddata products.yaml && python manage.py migrate
+  on: master
