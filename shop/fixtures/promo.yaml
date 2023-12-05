@@ -1,0 +1,11 @@
+- model: shop.promocode
+  pk: 1
+  fields:
+    code: PROMO1
+
+
+- model: shop.promocode
+  pk: 2
+  fields:
+    code: PROMO2
+

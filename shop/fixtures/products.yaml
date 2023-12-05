@@ -1,15 +1,50 @@
 - model: shop.product
   pk: 1
   fields:
-    name: Стол
+    name: Компьютерный стол
     price: 2000
 - model: shop.product
   pk: 2
   fields:
-    name: Стул
-    price: 1000
+    name: Игровой стул
+    price: 1350
 - model: shop.product
   pk: 3
   fields:
-    name: Табурет
+    name: Наушники
+    price: 1500
+- model: shop.product
+  pk: 4
+  fields:
+    name: Микрофон
+    price: 900
+- model: shop.product
+  pk: 5
+  fields:
+    name: Оперативная память
+    price: 2000
+- model: shop.product
+  pk: 6
+  fields:
+    name: Видеокарта
+    price: 5000
+- model: shop.product
+  pk: 7
+  fields:
+    name: Мышь
     price: 500
+- model: shop.product
+  pk: 8
+  fields:
+    name: Клавиатура
+    price: 1000
+- model: shop.product
+  pk: 9
+  fields:
+    name: Блок Питания
+    price: 3000
+- model: shop.product
+  pk: 10
+  fields:
+    name: Монитор
+    price: 2500

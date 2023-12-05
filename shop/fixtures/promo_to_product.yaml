@@ -1,0 +1,23 @@
+- model: shop.productpromocoderelation
+  pk: 1
+  fields:
+    product: 2
+    promo_code: 1
+
+- model: shop.productpromocoderelation
+  pk: 1
+  fields:
+    product: 5
+    promo_code: 1
+
+- model: shop.productpromocoderelation
+  pk: 1
+  fields:
+    product: 6
+    promo_code: 1
+
+- model: shop.productpromocoderelation
+  pk: 2
+  fields:
+    product: 1
+    promo_code: 2

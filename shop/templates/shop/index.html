@@ -1,3 +1,5 @@
+<!-- templates/shop/index.html -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,21 +8,44 @@
 </head>
 <body>
     <div>
+        <!-- Promo Code Input Form -->
+        <form method="post" action="{% url 'apply_promo_code' %}">
+            {% csrf_token %}
+            <label for="promo_code">Enter Promo Code:</label>
+            <input type="text" id="promo_code" name="promo_code">
+            <button type="submit">Apply</button>
+        </form>
+    </div>
+    <div>
         <h3>Список</h3>
+        {% if error_message %}
+            <p style="color: red;"> {{ error_message }}</p>
+        {% endif %}
+        {% if success_message %}
+            <p style="color: green;"> {{ success_message }}</p>
+        {% endif %}
         <table>
             <tr>
                 <td><p>Наименование</p></td>
                 <td><p>Цена</p></td>
                 <td></td>
             </tr>
-            {% for p in products %}
+            {% for product in products %}
                 <tr>
-                    <td><p>{{ p.name }}</p></td>
-                    <td><p>{{ p.price }}</p></td>
-                    <td><p><a href="/buy/{{ p.id }}">Купить</a></p></td>
+                    <td><p>{{ product.pk }}</p></td>
+                    <td><p>{{ product.name }}</p></td>
+                    <td><p>{{ product.price }}</p></td>
+                    <td><p><a href="/buy/{{ product.id }}">Купить</a></p></td>
                 </tr>
             {% endfor %}
         </table>
+
+        <h3>Активные промокоды</h3>
+        <ul>
+            {% for promo_code in promo_codes %}
+                <li> {{ promo_code.code }}</li>
+            {% endfor %}
+        </ul>
     </div>
 </body>
 </html>
